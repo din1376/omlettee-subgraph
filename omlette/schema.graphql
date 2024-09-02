@@ -1,0 +1,30 @@
+type User {
+  id: ID!
+  userAddress: Bytes!
+  nullifier: BigInt!
+  nullifierSeed: BigInt!
+  revealedData: [BigInt!]!
+}
+
+type Query {
+  users: [User!]!
+  user(id: ID!): User
+}
+
+type Subscription {
+  userAdded(userAddress: Bytes!): User
+}
+
+type Mutation {
+  addUser(
+    userAddress: Bytes!
+    nullifierSeed: BigInt!
+    nullifier: BigInt!
+    timestamp: BigInt!
+    signal: BigInt!
+    revealArray: [BigInt!]!
+    groth16Proof: [BigInt!]!
+    nonce: BigInt!
+    signature: Bytes!
+  ): User
+}
